@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+   {% block title %}Liste des auteurs{% endblock %}
+    
+
+{% block body %} <style>
+        .small-image {
+            max-width: 100px; 
+            max-height: 100px;
+        }
+    </style>
+    <h1>Liste des auteurs</h1>
+    <h2>{{authors|length}}</h2>
+    {% if authors is defined or authors is not empty %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Nombre de livres</th>
+                <th>details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.id }}</td>
+                    <td><img src="{{ author.picture }}" alt="{{ author.username }}" class="small-image"></td>
+                    <td>{{ author.username|upper }}</td>
+                    <td>{{ author.nb_books }}</td>
+                    <td><a href="{{ path('detail', {'id': author.id}) }}">details</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {%else%}
+    <p>Aucun auteur trouvé.</p>
+    {%endif%}
+{%endblock%}
+

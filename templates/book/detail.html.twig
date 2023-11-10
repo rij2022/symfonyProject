@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}book show!{% endblock %}
+{% block body %}
+    <div class="centered-content">
+    <h1>Book</h1>
+        <p>title of book: {{ book.title}}</p>
+       <p>Publication date : {{ book.publishedDate | date('Y-m-d') }}</p>
+<p>Author : {{ book.author.username }}</p>
+<a href="{{ path('showPublished') }}">back to the list of books</a>
+    </div>
+    
+    <style>
+    .centered-content {
+        text-align: center; 
+        margin: 0 auto; 
+    
+    }
+</style>
+{%endblock%}
+

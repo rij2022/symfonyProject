@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+   {% block title %}List of books{% endblock %}
+    
+
+{% block body %} 
+ 
+    <h1>List of books</h1>
+    
+ {% if list is defined or list is not empty %}
+
+    <table style="border: 1px solid #000;">
+        <thead>
+            <tr>
+              
+                <th style="border: 1px solid #000;">Title</th>
+                  <th style="border: 1px solid #000;">Publication date</th>
+                   <th style="border: 1px solid #000;">published</th>
+                   <th style="border: 1px solid #000;">Category</th>
+                     <th style="border: 1px solid #000;">Author</th>
+              
+          
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in list %}
+                <tr>
+                  
+                    <td style="border: 1px solid #000;">{{ book.title}}</td>
+                    <td style="border: 1px solid #000;">{{ book.publishedDate| date('M-d-Y') }}</td>
+                         <td style="border: 1px solid #000;">{{ book.published }}</td>
+                         <td style="border: 1px solid #000;">{{ book.category }}</td>
+                        <td style="border: 1px solid #000;">{{ book.author.username }}</td>
+                  <td style="border: 1px solid #000;">
+                    <a href="{{ path('edit_book',{'ref': book.ref})}}">edit</a>
+                    <a href="{{ path('delete_book',{'ref': book.ref})}}">delete</a>
+                    <a href="{{ path('show_book',{'ref': book.ref})}}">show</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+   <p>Number of published books : {{ published }}</p>
+    <p>Number of Unpublished books : {{ unpublished }}</p>
+     <div><a href="{{ path('formBook')}}">Add</a></div>
+     <div><a href="{{ path('updateW')}}">change Shakespear category</a></div>
+    <div>
+     <a href="{{ path('delete_author')}}">delete author with zero books</a><div>
+    {%else%}
+    <h3>No Books found</h3>
+    <div><a href="{{ path('formBook')}}">Add</a></div>
+     
+    <div>
+     <a href="{{ path('delete_author')}}">delete author with zero books</a><div>
+    {%endif%}
+{%endblock%}
+

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+   {% block title %}Liste des auteurs{% endblock %}
+    
+
+{% block body %} 
+ 
+    <h1>Liste des auteurs</h1>
+    
+   
+    <table style="border: 1px solid #000;">
+        <thead>
+            <tr>
+              
+                <th style="border: 1px solid #000;">Username</th>
+                <th style="border: 1px solid #000;">Email</th>
+                
+                  <th style="border: 1px solid #000;">Actions</th>
+              
+          
+            </tr>
+        </thead>
+        <tbody>
+            {% for authors in list %}
+                <tr>
+                  
+                    <td style="border: 1px solid #000;">{{ authors.username|upper }}</td>
+                    <td style="border: 1px solid #000;">{{ authors.email }}</td>
+                   
+                    
+                    <td style="border: 1px solid #000;">
+                    <a href="{{ path('edit_author',{'id': authors.id})}}">edit</a>
+                    <a href="{{ path('delete_author',{'id': authors.id})}}">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+ 
+{%endblock%}
+

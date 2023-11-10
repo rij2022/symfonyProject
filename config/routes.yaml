@@ -1,3 +1,36 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# config/routes.yaml
+
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+service:
+    path: /service/{name}
+    controller: App\Controller\ServiceController::showService
+
+go_to_index:
+    path: /go-to-index
+    controller: App\Controller\ServiceController::goToIndex
+
+show_author:
+    path: /showauthor/{name}
+    controller: App\Controller\AuthorController::showAuthor
+
+list:
+    path: /list
+    controller: App\Controller\AuthorController::list
+detail:
+    path: /authorDetails/{id}
+    controller: App\Controller\AuthorController::auhtorDetails
+show:
+    path: /author_show
+    controller: App\Controller\AuthorController::showAuthors2
+author_add:
+    path: /authorAdd
+    controller: App\Controller\AuthorController::addAuthor
+edit_author:
+    path: author/edit/{id}
+    controller: App\Controller\AuthorController::editAuthor
+searchBook:
+    path: /bookSearch
+    controller: App\Controller\BookController::searchBook
